@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: demo
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: satyam
+Built-By: mani
 Implementation-Vendor-Id: org.egov
-Build-Jdk: 1.8.0_131
+Build-Jdk: 1.8.0_66
 Implementation-URL: http://projects.spring.io/spring-boot/demo/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.

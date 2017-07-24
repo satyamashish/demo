@@ -1,0 +1,126 @@
+    /departments/_search:
+      post:
+        summary: Get the list of departments
+        description: departments
+        tags: 
+          - commons
+          - Department
+        parameters:
+          - name: requestInfo
+            in: body
+            description: Common Request info for the Services
+            schema:
+              $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/RequestInfo'
+          - name: tenantId
+            in: query
+            description: Unique id for  a tenant.
+            required: true
+            type: string
+            format: varchar
+          - name: ids
+            type: array
+            items: 
+              type: integer
+            format: int64
+            in: query
+            maxItems: 50
+            description: comma seperated list of Ids 
+          - name: name
+            type: string
+            in: query
+            description: |
+              name is the name of the department . Example Accounts ,Engineering
+              
+          - name: code
+            type: string
+            in: query
+            description: |
+              code is the code given to a department . This is more likly to be the
+              short name of the department
+              
+          - name: active
+            type: boolean
+            in: query
+            description: |
+              active tells whether the department is in action or not.
+              
+          - name: pageSize
+            type: integer
+            format: int32
+            in: query
+            description: |
+              
+              
+          - name: offSet
+            type: integer
+            format: int32
+            in: query
+            description: |
+              
+              
+        responses:
+          200:
+            description: Department retrieved Successfully
+            schema:
+              $ref: '#/definitions/DepartmentResponse'
+          400:
+            description: Invalid Input
+            schema:
+              $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+    /departments/_create:
+      post:
+        summary: Create  new  departments
+        description: Create  new departments
+        tags: 
+          - commons
+          - Department
+        parameters:
+          - name: tenantId
+            in: query
+            description: Unique id for  a tenant.
+            required: true
+            type: string
+            format: varchar
+          - name: departmentRequest
+            in: body
+            description: Create  new 
+            schema:
+              $ref: '#/definitions/DepartmentRequest'
+        responses:
+          201:
+            description: Department created Successfully
+            schema:
+              $ref: '#/definitions/DepartmentResponse'
+          400:
+            description: Invalid Input
+            schema:
+              $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+    /departments/_update:
+      post:
+        summary: Update any of the departments
+        description: Update any of the departments
+        tags: 
+          - commons
+          - Department
+        parameters:
+          - name: tenantId
+            in: query
+            description: Unique id for  a tenant.
+            required: true
+            type: string
+            format: varchar
+          - name: departmentRequest
+            in: body
+            description: common Request info
+            schema:
+              $ref: '#/definitions/DepartmentRequest'
+        responses:
+          200:
+            description: Department updated Successfully
+            schema:
+              $ref: '#/definitions/DepartmentResponse'
+          400:
+            description: Invalid Input
+            schema:
+              $ref: 'https://raw.githubusercontent.com/egovernments/egov-services/master/docs/common/contracts/v1-0-0.yml#/definitions/ErrorRes'
+

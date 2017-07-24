@@ -38,10 +38,12 @@
  *  In case of any queries, you can reach eGovernments Foundation at contact@egovernments.org.
  */
 
-package org.egov.commons.model;
+package org.egov.infra.commons.model;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.egov.common.domain.model.Auditable;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -50,44 +52,33 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Date;
-import java.util.List;
-
 @AllArgsConstructor
 @EqualsAndHashCode
 @Getter
 @NoArgsConstructor
 @Setter
 @ToString
-public class Department {
+public class Department extends Auditable {
 
 	@NotNull
-	private Long id;
-
+	private String id;
+	/**
+	 * name is the name of the department . Example Accounts ,Engineering
+	 */
 	@NotNull
-	@Size(min=8, max=64)
+	@Size(min = 8, max = 64)
 	private String name;
-
+	/**
+	 * code is the code given to a department . This is more likly to be the
+	 * short name of the department
+	 */
 	@NotNull
-	@Size(min=1, max=10)
+	@Size(min = 1, max = 10)
 	private String code;
-
+	/**
+	 * active tells whether the department is in action or not.
+	 */
 	@NotNull
 	private Boolean active;
 
-	@NotNull
-	private String tenantId;
-
-	@NotNull
-	private Long createdBy;
-
-	private Date createdDate;
-
-
-	@NotNull
-	private Long lastModifiedBy;
-
-	private Date lastModifiedDate;
-
-	
 }
